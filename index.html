@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>TODO List</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#eee;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+}
+
+
+.box{
+
+background:white;
+
+padding:30px;
+
+width:400px;
+
+border-radius:10px;
+
+}
+
+
+h1{
+
+text-align:center;
+
+}
+
+
+input{
+
+padding:10px;
+
+width:70%;
+
+}
+
+
+button{
+
+padding:10px;
+
+}
+
+
+li{
+
+margin:10px;
+
+}
+
+
+.done{
+
+text-decoration:line-through;
+
+color:gray;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+<h1>TODO List</h1>
+
+
+<input id="input" placeholder="輸入待辦事項">
+
+
+<button onclick="add()">
+新增
+</button>
+
+
+<ul id="list"></ul>
+
+
+</div>
+
+
+
+<script>
+
+
+function add(){
+
+
+let input=document.getElementById("input");
+
+
+if(input.value=="") return;
+
+
+
+let li=document.createElement("li");
+
+
+li.innerHTML=
+
+`
+<span onclick="done(this)">
+${input.value}
+</span>
+
+<button onclick="remove(this)">
+刪除
+</button>
+`;
+
+
+
+document.getElementById("list")
+.appendChild(li);
+
+
+
+input.value="";
+
+
+}
+
+
+
+
+function done(e){
+
+e.classList.toggle("done");
+
+}
+
+
+
+
+function remove(e){
+
+e.parentElement.remove();
+
+}
+
+
+</script>
+
+
+</body>
+
+
+</html>
